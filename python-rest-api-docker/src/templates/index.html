@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taschenrechner</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f2f4f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .karte {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            width: 320px;
+        }
+        h1 { font-size: 1.4rem; margin: 0 0 1.5rem; text-align: center; }
+        label { display: block; font-size: 0.85rem; color: #555; margin: 0.8rem 0 0.2rem; }
+        input, select {
+            width: 100%;
+            padding: 0.6rem;
+            font-size: 1rem;
+            border: 1px solid #ccd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 0.7rem;
+            font-size: 1rem;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover { background: #1d4ed8; }
+        .ergebnis {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #f0f5ff;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2rem;
+            min-height: 1.2rem;
+        }
+        .ergebnis.fehler { background: #fff0f0; color: #c0392b; font-size: 1rem; }
+        .ergebnis.meme-alarm {
+            background: #c0392b;
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1.3;
+            text-transform: uppercase;
+            box-shadow: 0 0 0 4px #c0392b, 0 0 25px rgba(192, 57, 43, 0.7);
+            animation: meme-shake 0.35s linear infinite;
+        }
+        @keyframes meme-shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="karte">
+        <h1>🧮 Taschenrechner</h1>
+
+        <label for="zahl1">Erste Zahl</label>
+        <input type="number" id="zahl1" value="0" step="any">
+
+        <label for="operator">Operator</label>
+        <select id="operator">
+            <option value="+">+ (addieren)</option>
+            <option value="-">− (subtrahieren)</option>
+            <option value="*">× (multiplizieren)</option>
+            <option value="/">÷ (dividieren)</option>
+        </select>
+
+        <label for="zahl2">Zweite Zahl</label>
+        <input type="number" id="zahl2" value="0" step="any">
+
+        <button id="rechnen-btn">Berechnen</button>
+
+        <div class="ergebnis" id="ergebnis">Ergebnis erscheint hier</div>
+    </div>
+
+    <script>
+        const button = document.getElementById("rechnen-btn");
+        const ergebnisBox = document.getElementById("ergebnis");
+
+        button.addEventListener("click", async () => {
+            const zahl1 = parseFloat(document.getElementById("zahl1").value);
+            const zahl2 = parseFloat(document.getElementById("zahl2").value);
+            const operator = document.getElementById("operator").value;
+
+            // ⛔ Das "6-7"-Meme muss sterben. 6 + 7 ist hiermit verboten.
+            if (operator === "+" && ((zahl1 === 6 && zahl2 === 7) || (zahl1 === 7 && zahl2 === 6))) {
+                ergebnisBox.className = "ergebnis meme-alarm";
+                ergebnisBox.textContent = "⛔ Das Meme muss sterben! 6 + 7 ist verboten! ⛔";
+                return;
+            }
+
+            ergebnisBox.className = "ergebnis";
+            ergebnisBox.textContent = "Berechne ...";
+
+            try {
+                // Diese Anfrage geht an euren Endpunkt im controller.py!
+                const antwort = await fetch("/v1/rechnen", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ zahl1, zahl2, operator })
+                });
+
+                const daten = await antwort.json();
+
+                if (daten.ergebnis !== undefined) {
+                    ergebnisBox.textContent = "Ergebnis: " + daten.ergebnis;
+                } else if (daten.fehler !== undefined) {
+                    ergebnisBox.className = "ergebnis fehler";
+                    ergebnisBox.textContent = daten.fehler;
+                } else {
+                    ergebnisBox.className = "ergebnis fehler";
+                    ergebnisBox.textContent = "Unerwartete Antwort: " + JSON.stringify(daten);
+                }
+            } catch (e) {
+                ergebnisBox.className = "ergebnis fehler";
+                ergebnisBox.textContent = "Fehler bei der Anfrage (laeuft der Server?)";
+            }
+        });
+    </script>
+</body>
+</html>
