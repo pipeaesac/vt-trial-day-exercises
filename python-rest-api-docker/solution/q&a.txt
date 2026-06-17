@@ -1,0 +1,52 @@
+Fragen & Antworten zum Schnuppertag
+
+  F1: Was ist ein API-Endpunkt?
+  A: Eine Adresse auf dem Server, an die man eine Anfrage
+  schickt. Wie ein Schalter: du gibst etwas rein, der Server
+  rechnet und gibt dir eine Antwort zurück.
+
+  ---
+  F2: Was ist JSON?
+  A: Ein Format, um Daten zu verschicken – so wie ein Zettel
+  mit beschrifteten Feldern. Beispiel: {"zahl1": 5,
+  "zahl2": 3}. Webseite und Server tauschen so Informationen
+  aus.
+
+  ---
+  F3: Was ist ein Python-Dictionary?
+  A: Eine Art Liste mit Bezeichnungen. Statt einer Nummer
+  hat jeder Wert einen Namen (Schlüssel). Beispiel:
+  {"operator": "+"} – mit daten["operator"] holt man sich
+  das + heraus.
+
+  ---
+  F4: Wie holt man sich Funktionen aus einer anderen Datei?
+  A: Mit from dateiname import funktionsname. Beispiel: from
+  rechner import addieren – dann kann man addieren
+  benutzen, als wäre es in der gleichen Datei.
+
+  ---
+  F5: Was passiert, wenn man durch 0 teilt?
+  A: Das ist in der Mathematik nicht erlaubt. Python würde
+  normalerweise einen Fehler ausgeben. Deshalb prüft die
+  dividieren-Funktion das vorher und gibt stattdessen eine
+  Fehlermeldung zurück.
+
+  ---
+  F6: Wozu braucht man Docker?
+  A: Docker packt das Programm mit allem, was es braucht, in
+  eine Box (Container). So kann man die Box auf jedem
+  Computer starten, ohne etwas extra installieren zu müssen.
+
+  ---
+  F7: Was ist der Unterschied zwischen GET und POST?
+  A: GET = Daten abrufen (z.B. eine Seite öffnen). POST =
+  Daten hinschicken (z.B. Zahlen zum Berechnen senden). Der
+  Taschenrechner benutzt POST, weil er Zahlen an den Server
+  schickt.
+
+  ---
+  F8: Was macht if/elif/else?
+  A: Eine Entscheidung im Code. "Wenn das + ist, addiere.
+  Wenn -, subtrahiere. Sonst: Fehler." – wie eine Weiche,
+  die den Code in die richtige Richtung lenkt.
