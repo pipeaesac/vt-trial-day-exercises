@@ -1,5 +1,9 @@
 # 🧮 Übung: Bring den Taschenrechner ins Web
 
+> 📝 **Nimm dir Notizen!** Du wirst am Ende Fragen zu dieser Übung beantworten.
+> Schreib dir auf, was du tust, was du verstehst – und auch, wenn etwas unklar ist.
+> Stichwörter reichen völlig aus.
+
 Willkommen zum **zweiten Teil**! Heute Früh hast du einen Taschenrechner in Python
 gebaut (`rechner.py`). Der läuft bisher nur im Terminal. Jetzt machst du daraus einen
 **Web-Service**: eine Internetseite, auf der man rechnen kann.
@@ -36,7 +40,7 @@ und diese Anleitung führt dich Schritt für Schritt. Du schaffst das zu 90 % al
 Baue und starte den Server mit diesen zwei Befehlen:
 
 ```bash
-docker build -t python-rest .
+python-rest-api-docker % docker build -t python-rest-api-docker .
 docker run -d --name rechner -p 5000:5000 python-rest
 ```
 
@@ -50,7 +54,7 @@ das ist genau richtig! Den fehlenden Teil baust du gleich.
 > Dieser eine Befehl macht beides (das Bauen geht nach dem ersten Mal sehr schnell):
 >
 > ```bash
-> docker rm -f rechner; docker build -t python-rest . && docker run -d --name rechner -p 5000:5000 python-rest
+> docker rm -f rechner; docker build -t  python-rest-api-docker . && docker run -d --name rechner -p 5000:5000 python-rest-api-docker
 > ```
 >
 > Danach im Browser einfach neu laden. Tipp: Leg dir diesen Befehl bereit, du
@@ -74,6 +78,8 @@ Damit der Server deinen Rechner findet, muss er als `src/rechner.py` liegen.
 
 An den Funktionen selbst musst du jetzt **nichts** mehr ändern – du wirst sie gleich nur *aufrufen*.
 
+> 📝 **Notiz-Tipp:** Schreib dir die Funktionsnamen und ihre Parameter auf – am Ende kommen Fragen dazu!
+
 ---
 
 ## Schritt 2 – Die Funktionen importieren
@@ -86,9 +92,13 @@ Damit du die Funktionen aus `rechner.py` benutzen kannst, musst du sie zuerst
 
 💡 **Tipp:** Die Datei heißt `rechner` (ohne `.py`). Importiere alle vier Funktionen,
 die du in Schritt 1 gefunden hast.
+   
+   **Wichtig:** Die Funktionen sind gelb unterstrichen, die Fehlermeldung sagt, dass auf die Funktionen nicht zugegriffen werden kann. Dieser Fehler bedeuted nur, dass du die funktion noch nicht in diesem File angewendet hast, also werden die mit den nächsten Schritten verschwinden, keine Sorge!
 
 > Test: Speichere, starte den Server neu (siehe Befehl in Schritt 0) und schau mit
 > `docker logs rechner` ins Protokoll. Wenn dort **kein** Fehler steht, stimmt dein Import.
+
+> 📝 **Notiz-Tipp:** Schreib dir auf, wie ein `import`-Befehl in Python aufgebaut ist – am Ende kommen Fragen dazu!
 
 ---
 
@@ -107,6 +117,8 @@ Hol dir aus `daten` die drei Werte in drei eigene Variablen (z. B. `zahl1`, `zah
 z. B. `daten["operator"]`. Schau dir an, wie der fertige Endpunkt `postSomeThing()`
 weiter oben das mit `content["name"]` macht – dein Vorgehen ist dasselbe.
 
+> 📝 **Notiz-Tipp:** Schreib dir auf, was ein Dictionary ist und wie man darauf zugreift – am Ende kommen Fragen dazu!
+
 ---
 
 ## Schritt 4 – Die richtige Rechnung auswählen
@@ -121,6 +133,8 @@ sehen – die kannst du dir als Vorbild nehmen (aber Tippen statt Kopieren – s
 Speichere das Ergebnis in einer Variablen, z. B. `ergebnis`.
 
 ❓ Überlege: Was soll passieren, wenn jemand einen Operator schickt, den es gar nicht gibt?
+
+> 📝 **Notiz-Tipp:** Schreib dir auf, wie eine `if/elif/else`-Struktur funktioniert – am Ende kommen Fragen dazu!
 
 ---
 
@@ -140,6 +154,8 @@ mit `return` zurück.
 
 ➡️ Lösche zum Schluss die Platzhalter-Zeile (`return jsonify({"fehler": ...})`),
 sonst wird sie statt deiner Antwort ausgeführt.
+
+> 📝 **Notiz-Tipp:** Schreib dir auf, was JSON ist und warum Server so antworten – am Ende kommen Fragen dazu!
 
 ---
 

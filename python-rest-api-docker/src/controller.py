@@ -9,6 +9,7 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 @app.route("/")
 def index():
     # Liefert die Taschenrechner-Oberflaeche (templates/index.html) aus.
@@ -42,4 +43,6 @@ def rechnen():
     # TODO (Schritt 5): Gib das Ergebnis als JSON zurueck -> { "ergebnis": ... }
 
     # Platzhalter, damit die App startet. Ersetze ihn durch deine Loesung.
-    return jsonify({"fehler": "Endpunkt noch nicht implementiert (siehe exercise.md)"}), 501
+    return jsonify(
+        {"fehler": "Endpunkt noch nicht implementiert (siehe exercise.md)"}
+    ), 501
