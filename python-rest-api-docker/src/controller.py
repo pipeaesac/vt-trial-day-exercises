@@ -1,13 +1,12 @@
 from flask import Flask, request, jsonify, render_template
 import logging
 
-# TODO (Schritt 2): Importiere hier die Funktionen aus rechner.py,
-#                   damit du sie weiter unten benutzen kannst.
-# from rechner import ...
+from rechner import addieren, subtrahieren, dividieren, multiplizieren
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 @app.route("/")
 def index():
@@ -42,4 +41,6 @@ def rechnen():
     # TODO (Schritt 5): Gib das Ergebnis als JSON zurueck -> { "ergebnis": ... }
 
     # Platzhalter, damit die App startet. Ersetze ihn durch deine Loesung.
-    return jsonify({"fehler": "Endpunkt noch nicht implementiert (siehe exercise.md)"}), 501
+    return jsonify(
+        {"fehler": "Endpunkt noch nicht implementiert (siehe exercise.md)"}
+    ), 501
