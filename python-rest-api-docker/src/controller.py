@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify, render_template
 import logging
 
-from rechner import addieren, subtrahieren, dividieren, multiplizieren
+# TODO (Schritt 2): Importiere hier die Funktionen aus rechner.py,
+#                   damit du sie weiter unten benutzen kannst.
+# from rechner import ...
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
