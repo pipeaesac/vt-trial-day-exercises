@@ -18,3 +18,5 @@ Das Ziel ist es, diese Aufgaben so selbstständig wie möglich zu lösen. Versuc
 Die folgenden Hilfestellungen geben dir weitere Informationen, die dir beim Lösen der Übungen helfen können:
 
 * TODO
+* TODO
+* TODO
