@@ -1,0 +1,85 @@
+/* ==============================
+   DEINE CSS-DATEI
+   
+   So funktioniert CSS:
+   
+   selektor {
+     eigenschaft: wert;
+   }
+   
+   Beispiel:
+   h1 {
+     color: red;
+   }
+================================ */
+
+
+/* GANZE SEITE */
+body {
+  font-family: Arial, sans-serif;
+
+  /* TODO: Ändere die Hintergrundfarbe (probiere z.B. #f0f4ff oder lightyellow) */
+  background-color: white;
+
+  /* TODO: Ändere die Textfarbe */
+  color: black;
+}
+
+
+/* KOPFBEREICH */
+header {
+  /* TODO: Gib dem Header eine Hintergrundfarbe */
+  background-color: gray;
+
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+
+/* HAUPTÜBERSCHRIFT */
+h1 {
+  /* TODO: Ändere die Farbe und Grösse */
+  color: white;
+  font-size: 40px;
+}
+
+
+/* UNTERÜBERSCHRIFTEN */
+h2 {
+  /* TODO: Ändere die Farbe */
+  color: gray;
+}
+
+
+/* INHALT */
+main {
+  padding: 30px;
+
+  /* TODO: Probiere eine maximale Breite (z.B. max-width: 700px) */
+}
+
+
+/* BILD */
+img {
+  /* TODO: Ändere die Breite und probiere border-radius für runde Ecken */
+  width: 400px;
+}
+
+
+/* LINKS */
+a {
+  /* TODO: Ändere die Linkfarbe */
+  color: blue;
+}
+
+
+/* FUSSBEREICH */
+footer {
+  background-color: gray;
+  color: white;
+  text-align: center;
+  padding: 20px;
+
+  /* TODO: Ändere die Farbe passend zu deinem Header */
+}

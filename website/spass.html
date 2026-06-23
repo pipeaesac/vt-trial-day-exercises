@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spass-Seite</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Spass-Seite 🎉</h1>
+    <p>Hier kannst du JavaScript ausprobieren!</p>
+  </header>
+
+  <main>
+
+    <!-- Zurück-Link -->
+    <a href="index.html">← Zurück zum Steckbrief</a>
+
+    <br /><br />
+
+
+    <!-- ==============================
+         AUFGABE 1: BEGRÜSSUNG
+    ================================ -->
+
+    <h2>Aufgabe 1 – Begrüssung</h2>
+
+    <p>Klicke den Button. Er fragt nach deinem Namen und begrüsst dich.</p>
+
+    <button onclick="aufgabe1()">Wie heisst du?</button>
+
+    <!-- Hier erscheint die Antwort -->
+    <p id="antwort1"></p>
+
+
+    <!-- ==============================
+         AUFGABE 2: RECHNER
+    ================================ -->
+
+    <h2>Aufgabe 2 – Mini-Rechner</h2>
+
+    <p>Gib zwei Zahlen ein und klicke auf Berechnen.</p>
+
+    <!-- type="number" erlaubt nur Zahlen -->
+    <!-- id="..." damit JavaScript die Werte lesen kann -->
+    <input type="number" id="zahl1" placeholder="Erste Zahl" />
+    +
+    <input type="number" id="zahl2" placeholder="Zweite Zahl" />
+
+    <button onclick="aufgabe2()">= Berechnen</button>
+
+    <p id="antwort2"></p>
+
+
+    <!-- ==============================
+         AUFGABE 3: FARB-WECHSLER
+    ================================ -->
+
+    <h2>Aufgabe 3 – Farb-Wechsler</h2>
+
+    <p>Wähle eine Farbe. Der Kasten ändert sich.</p>
+
+    <!-- type="color" zeigt einen Farbwähler -->
+    <input type="color" id="farbwahl" value="#5b9cf6" oninput="aufgabe3()" />
+
+    <!-- Dieser Kasten ändert die Farbe -->
+    <div id="farbkasten" style="
+      width: 200px;
+      height: 80px;
+      background-color: #5b9cf6;
+      border-radius: 10px;
+      margin-top: 10px;
+    "></div>
+
+
+    <!-- ==============================
+         AUFGABE 4: ZÄHLER
+    ================================ -->
+
+    <h2>Aufgabe 4 – Zähler</h2>
+
+    <p>Klicke die Buttons und schau was passiert.</p>
+
+    <button onclick="zaehlerRunter()">➖</button>
+
+    <!-- Hier steht der aktuelle Wert des Zählers -->
+    <span id="zaehler" style="font-size: 32px; margin: 0 16px;">0</span>
+
+    <button onclick="zaehlerHoch()">➕</button>
+
+    <br /><br />
+
+    <button onclick="zaehlerReset()">Reset</button>
+
+
+    <!-- ==============================
+         BONUS: EIGENER BUTTON
+    ================================ -->
+
+    <h2>Bonus – Dein eigener Button</h2>
+
+    <p>
+      <!-- TODO BONUS: Ändere den Text des Buttons -->
+      <!-- TODO BONUS: Schreibe unten die Funktion "meinButton()" -->
+    </p>
+
+    <button onclick="meinButton()">Mein Button</button>
+
+    <p id="bonusAntwort"></p>
+
+  </main>
+
+  <footer>
+    <p><a href="index.html" style="color: white;">← Zurück zum Steckbrief</a></p>
+  </footer>
+
+
+  <!-- ==============================
+       JAVASCRIPT
+  ================================ -->
+  <script>
+
+    // ── AUFGABE 1 ──────────────────────────────────
+    function aufgabe1() {
+      // prompt() öffnet ein Eingabefenster und gibt den Text zurück
+      var name = prompt("Wie heisst du?");
+
+      // if prüft eine Bedingung
+      if (name == "" || name == null) {
+        document.getElementById("antwort1").textContent = "Du hast nichts eingegeben!";
+      } else {
+        document.getElementById("antwort1").textContent = "Hallo, " + name + "! 👋";
+      }
+    }
+
+
+    // ── AUFGABE 2 ──────────────────────────────────
+    function aufgabe2() {
+      // .value liest den Wert aus einem <input>-Feld
+      // Number() wandelt Text in eine Zahl um
+      var a = Number(document.getElementById("zahl1").value);
+      var b = Number(document.getElementById("zahl2").value);
+
+      var summe = a + b;
+
+      document.getElementById("antwort2").textContent = a + " + " + b + " = " + summe;
+    }
+
+
+    // ── AUFGABE 3 ──────────────────────────────────
+    function aufgabe3() {
+      // Liest die gewählte Farbe aus dem Farbwähler
+      var farbe = document.getElementById("farbwahl").value;
+
+      // Setzt die Hintergrundfarbe des Kastens
+      document.getElementById("farbkasten").style.backgroundColor = farbe;
+    }
+
+
+    // ── AUFGABE 4 ──────────────────────────────────
+
+    // var speichert einen Wert – dieser bleibt solange die Seite offen ist
+    var aktuellerWert = 0;
+
+    function zaehlerHoch() {
+      aktuellerWert = aktuellerWert + 1;
+      document.getElementById("zaehler").textContent = aktuellerWert;
+    }
+
+    function zaehlerRunter() {
+      aktuellerWert = aktuellerWert - 1;
+      document.getElementById("zaehler").textContent = aktuellerWert;
+    }
+
+    function zaehlerReset() {
+      aktuellerWert = 0;
+      document.getElementById("zaehler").textContent = aktuellerWert;
+    }
+
+
+    // ── BONUS ──────────────────────────────────────
+    // TODO: Schreibe hier deine eigene Funktion!
+    // Was soll passieren wenn man auf "Mein Button" klickt?
+    function meinButton() {
+      document.getElementById("bonusAntwort").textContent = "Hier kommt dein Text!";
+    }
+
+  </script>
+
+</body>
+</html>
