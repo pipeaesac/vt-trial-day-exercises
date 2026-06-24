@@ -1,16 +1,50 @@
-# python-rest-api-docker
+# ⚙️ Aufgabe 1 – Taschenrechner Backend
 
-steps to run the sample rest service on docker -
+Hier baust du den Server-Teil des Taschenrechners mit Python und Flask.
 
-1. Clone the Repository - git clone https://github.com/nanic/python-rest-api-docker.git
+Die Anleitung Schritt für Schritt findest du in `exercise.md`.
 
-2. Move to the directory - cd python-rest-api-docker
+---
 
-3. Build the docker image - docker build -t python-rest .
+## Starten
 
-4. Create and run a container - docker run -d -p 5000:5000 python-rest
+Im **Hauptordner** (wo `docker-compose.yml` liegt):
 
-5. Navigate to localhost:5000 to get hello world'd
+```powershell
+docker compose up --build
+```
 
-6. Curl Befehl:
-      curl -X POST http://localhost:5000/v1/api -H "Content-Type: application/json" -d '{"name": "naren"}
+Dann: **http://localhost:8080**
+
+Nach jeder Änderung einfach denselben Befehl nochmal ausführen.
+
+---
+
+## Dateien
+
+| Datei | Was |
+|-------|-----|
+| `src/rechner.py` | Dein Taschenrechner vom Vormittag – kopiere deinen Code hierher |
+| `src/controller.py` | Der Flask-Server – **hier arbeitest du** |
+
+---
+
+## Logs anschauen
+
+Wenn etwas nicht klappt:
+
+```powershell
+docker logs rechner-backend
+```
+
+---
+
+## Testen ohne Browser
+
+```powershell
+curl -X POST http://localhost:8080/api/v1/rechnen `
+  -H "Content-Type: application/json" `
+  -d '{"zahl1": 5, "zahl2": 3, "operator": "+"}'
+```
+
+Erwartete Antwort: `{"ergebnis": 8}`
