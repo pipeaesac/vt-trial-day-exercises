@@ -1,0 +1,16 @@
+services:
+
+  # Python/Flask Backend – der Taschenrechner
+  backend:
+    build: ./python-rest-api-docker
+    container_name: rechner-backend
+    # intern auf Port 5000 erreichbar (nur für nginx, nicht von aussen)
+
+  # Nginx – liefert das calculator-frontend aus und leitet /api/ ans Backend
+  frontend:
+    build: ./calculator-frontend
+    container_name: rechner-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
