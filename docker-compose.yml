@@ -1,0 +1,13 @@
+services:
+
+  backend:
+    build: ./python-rest-api-docker
+    container_name: rechner-backend
+
+  frontend:
+    build: ./calculator-frontend
+    container_name: rechner-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
