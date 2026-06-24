@@ -98,60 +98,39 @@
 
 
   <script>
-
-    // ================================================================
-    // DEINE AUFGABE: Schreibe die Funktion rechnen() fertig
-    // ================================================================
-    //
-    // Schritt 1 – Werte aus dem Formular lesen:
-    //
-    //   var zahl1    = Number(document.getElementById("zahl1").value);
-    //   var zahl2    = Number(document.getElementById("zahl2").value);
-    //   var operator = document.getElementById("operator").value;
-    //
-    // ------------------------------------------------------------------
-    //
-    // Schritt 2 – Anfrage ans Backend schicken mit fetch():
-    //
-    //   const antwort = await fetch("/api/v1/rechnen", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ zahl1: zahl1, zahl2: zahl2, operator: operator })
-    //   });
-    //   const daten = await antwort.json();
-    //
-    //   "async" und "await" bedeuten: warte auf die Antwort vom Server.
-    //   JSON.stringify() verpackt die Daten als Text zum Verschicken.
-    //
-    // ------------------------------------------------------------------
-    //
-    // Schritt 3 – Ergebnis anzeigen:
-    //
-    //   document.getElementById("ergebnis").textContent = "Ergebnis: " + daten.ergebnis;
-    //
-    // ------------------------------------------------------------------
-    //
-    // Bonus – Fehler anzeigen:
-    //
-    //   Das Backend schickt { "fehler": "..." } wenn etwas schiefläuft.
-    //   Tipp: if (daten.fehler) { ... }
-    //   Setze dann auch die CSS-Klasse: ergebnisBox.className = "fehler";
-    //
-    // ================================================================
-
     async function rechnen() {
+      // Schritt 1: Werte aus dem Formular lesen
+      var zahl1    = Number(document.getElementById("zahl1").value);
+      var zahl2    = Number(document.getElementById("zahl2").value);
+      var operator = document.getElementById("operator").value;
 
-      // TODO Schritt 1: Lies zahl1, zahl2 und operator
+      var ergebnisBox = document.getElementById("ergebnis");
+      ergebnisBox.className = "";
+      ergebnisBox.textContent = "Berechne...";
 
+      // Schritt 2: Anfrage ans Backend schicken
+      try {
+        const antwort = await fetch("/api/v1/rechnen", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ zahl1: zahl1, zahl2: zahl2, operator: operator })
+        });
 
-      // TODO Schritt 2: Schicke die Daten per fetch() ans Backend
+        const daten = await antwort.json();
 
+        // Schritt 3: Ergebnis oder Fehler anzeigen
+        if (daten.ergebnis !== undefined) {
+          ergebnisBox.textContent = zahl1 + " " + operator + " " + zahl2 + " = " + daten.ergebnis;
+        } else {
+          ergebnisBox.className = "fehler";
+          ergebnisBox.textContent = daten.fehler;
+        }
 
-      // TODO Schritt 3: Zeige das Ergebnis an
-
-
+      } catch (e) {
+        ergebnisBox.className = "fehler";
+        ergebnisBox.textContent = "Fehler – läuft der Server?";
+      }
     }
-
   </script>
 
 </body>

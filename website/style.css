@@ -1,85 +1,60 @@
-/* ==============================
-   DEINE CSS-DATEI
-   
-   So funktioniert CSS:
-   
-   selektor {
-     eigenschaft: wert;
-   }
-   
-   Beispiel:
-   h1 {
-     color: red;
-   }
-================================ */
-
-
-/* GANZE SEITE */
 body {
   font-family: Arial, sans-serif;
-
-  /* TODO: Ändere die Hintergrundfarbe (probiere z.B. #f0f4ff oder lightyellow) */
-  background-color: white;
-
-  /* TODO: Ändere die Textfarbe */
-  color: black;
+  background-color: #f0f4ff;
+  color: #2d3048;
 }
 
-
-/* KOPFBEREICH */
 header {
-  /* TODO: Gib dem Header eine Hintergrundfarbe */
-  background-color: gray;
-
+  background-color: #2563eb;
   color: white;
   padding: 30px;
   text-align: center;
 }
 
-
-/* HAUPTÜBERSCHRIFT */
 h1 {
-  /* TODO: Ändere die Farbe und Grösse */
   color: white;
   font-size: 40px;
 }
 
-
-/* UNTERÜBERSCHRIFTEN */
 h2 {
-  /* TODO: Ändere die Farbe */
-  color: gray;
+  color: #2563eb;
 }
 
-
-/* INHALT */
 main {
   padding: 30px;
-
-  /* TODO: Probiere eine maximale Breite (z.B. max-width: 700px) */
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-
-/* BILD */
 img {
-  /* TODO: Ändere die Breite und probiere border-radius für runde Ecken */
-  width: 400px;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
 }
 
-
-/* LINKS */
 a {
-  /* TODO: Ändere die Linkfarbe */
-  color: blue;
+  color: #2563eb;
 }
 
+button {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 8px;
+  font-size: 1rem;
+}
 
-/* FUSSBEREICH */
+button:hover {
+  background-color: #1d4ed8;
+}
+
 footer {
-  background-color: gray;
+  background-color: #2563eb;
   color: white;
   text-align: center;
   padding: 20px;
-
-  /* TODO: Ändere die Farbe passend zu deinem Header */
+  margin-top: 40px;
 }

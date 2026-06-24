@@ -2,145 +2,69 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Mein Steckbrief</title>
+  <title>Steckbrief – Anna Müller</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ==============================
-       KOPFBEREICH
-  ================================ -->
-
   <header>
-    <!-- TODO: Schreibe deinen Namen -->
-    <h1>Vorname Nachname</h1>
-
-    <!-- TODO: Schreibe eine kurze Beschreibung über dich -->
-    <p>Schüler/in · Schnupperlehre Webentwicklung</p>
+    <h1>Anna Müller</h1>
+    <p>Schülerin · Schnupperlehre Webentwicklung 2025</p>
   </header>
-
-
-  <!-- ==============================
-       INHALT
-  ================================ -->
 
   <main>
 
-    <!-- ÜBER MICH -->
     <h2>Über mich</h2>
-
-    <!-- TODO: Fülle die Liste mit deinen eigenen Angaben aus -->
     <ul>
-      <li><b>Alter:</b> ???</li>
-      <li><b>Wohnort:</b> ???</li>
-      <li><b>Schule:</b> ???</li>
-      <li><b>Lieblingsfarbe:</b> ???</li>
+      <li><b>Alter:</b> 16 Jahre</li>
+      <li><b>Wohnort:</b> Zürich</li>
+      <li><b>Schule:</b> Kantonsschule Zürich</li>
+      <li><b>Lieblingsfarbe:</b> Blau</li>
     </ul>
 
-
-    <!-- MEINE HOBBYS -->
     <h2>Meine Hobbys</h2>
-
-    <!-- TODO: Ersetze die Hobbys durch deine eigenen -->
     <ul>
-      <li>Hobby 1</li>
-      <li>Hobby 2</li>
-      <li>Hobby 3</li>
+      <li>📸 Fotografieren</li>
+      <li>⚽ Volleyball</li>
+      <li>🎵 Musik hören</li>
     </ul>
 
-
-    <!-- MEIN BILD -->
     <h2>Mein Bild</h2>
+    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500" alt="Berglandschaft" />
 
-    <!--
-      TODO: Tausche das Bild aus.
-      Option A – Bild aus dem Internet:
-        Geh auf https://unsplash.com, such ein Bild,
-        Rechtsklick → "Bildadresse kopieren" → URL unten einfügen.
-      Option B – eigenes Foto:
-        Kopiere dein Foto in den Ordner "bilder"
-        und schreibe src="bilder/deinbild.jpg"
-    -->
-    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500" alt="Mein Bild" />
-
-
-    <!-- WARUM INFORMATIK -->
     <h2>Warum Informatik?</h2>
+    <p>
+      Ich finde es faszinierend, wie man mit ein paar Zeilen Code
+      echte Dinge bauen kann, die andere Menschen benutzen.
+      Heute habe ich zum ersten Mal eine Webseite gebaut – das macht Spass!
+    </p>
 
-    <!-- TODO: Schreibe 2–3 Sätze warum du dich für Informatik interessierst -->
-    <p>Hier kommt dein Text...</p>
-
-
-    <!-- MEIN LIEBLINGSLINK -->
     <h2>Mein Lieblingslink</h2>
-
-    <!-- TODO: Ändere den Link und den Linktext -->
-    <a href="https://www.example.com">Meine Lieblingswebseite</a>
-
-
-    <!-- ==============================
-         JAVASCRIPT
-    ================================ -->
+    <a href="https://www.nationalgeographic.com" target="_blank">National Geographic</a>
 
     <h2>Mini-Spiele 🎮</h2>
-
-    <!-- Das ist ein Button. onclick="..." ruft eine JavaScript-Funktion auf -->
     <button onclick="begruessen()">👋 Hallo sagen</button>
-
     <button onclick="farbeWechseln()">🎨 Farbe wechseln</button>
-
-    <!-- Hier erscheint der Text wenn man auf den Button klickt -->
-    <!-- id="..." gibt dem Element einen Namen, damit JS es findet -->
     <p id="nachricht"></p>
 
-
-    <!-- Link zur zweiten Seite -->
     <a href="spass.html">👉 Zur Spass-Seite</a>
 
   </main>
 
-
-  <!-- ==============================
-       FUSSBEREICH
-  ================================ -->
-
   <footer>
-    <!-- TODO: Schreibe deinen Namen -->
-    <p>Erstellt von Vorname Nachname · 2025</p>
+    <p>Erstellt von Anna Müller · Schnupperlehre 2025</p>
   </footer>
 
-
-
-  <!-- ==============================
-       JAVASCRIPT
-       Kommt immer ganz unten rein!
-  ================================ -->
   <script>
-
-    // Eine Funktion wird mit "function Name() { ... }" definiert
-    // und mit onclick="Name()" aufgerufen
-
-    // TODO: Ändere den Text im alert()
     function begruessen() {
-      alert("Hallo! Ich heisse Vorname Nachname 👋");
+      alert("Hallo! Ich heisse Anna Müller 👋");
     }
 
-    // Diese Funktion wechselt die Hintergrundfarbe der Seite
     function farbeWechseln() {
-      // Math.random() gibt eine zufällige Zahl zwischen 0 und 1
-      // toString(16) wandelt sie in einen Hex-Farbcode um
       var farbe = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
-
       document.body.style.backgroundColor = farbe;
-
-      // getElementById("nachricht") findet das <p id="nachricht"> oben
-      // .textContent = "..." ändert den Text darin
       document.getElementById("nachricht").textContent = "Aktuelle Farbe: " + farbe;
     }
-
-    // TODO BONUS: Schreibe deine eigene Funktion!
-    // Beispiel: Lass den Button etwas anderes sagen wenn man draufklickt
-
   </script>
 
 </body>
