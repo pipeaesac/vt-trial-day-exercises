@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 @app.route("/")
 def index():
-    # Liefert die Taschenrechner-Oberflaeche (templates/index.html) aus.
+    # Liefert die Taschenrechner-Oberflaeche (calculator-frontend/index.html) aus.
     return render_template("index.html")
 
 

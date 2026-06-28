@@ -1,0 +1,14 @@
+services:
+
+  backend:
+    build: ./calculator-backend
+    container_name: rechner-backend
+
+  frontend:
+    build: ./calculator-frontend
+    container_name: rechner-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: on-failure
